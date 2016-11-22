@@ -1,4 +1,4 @@
-package ryannewsom.com.castlerockdental;
+package ryannewsom.com.castlerockdental.schedule;
 
 
 import android.os.Bundle;
@@ -7,13 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ryannewsom.com.castlerockdental.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ScheduleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScheduleFragment extends Fragment {
+public class ScheduleFragment extends Fragment implements ScheduleContract.View {
+    private ScheduleContract.Presenter mPresenter;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,4 +66,8 @@ public class ScheduleFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 
+    @Override
+    public void setPresenter(ScheduleContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
 }
