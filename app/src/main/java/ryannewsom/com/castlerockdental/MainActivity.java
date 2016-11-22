@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
 
         launchScheduleFragment();
 
-        
+
     }
 
     @Override
