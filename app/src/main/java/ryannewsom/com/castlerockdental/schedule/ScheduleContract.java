@@ -13,7 +13,7 @@ import ryannewsom.com.castlerockdental.base.BaseView;
 public interface ScheduleContract {
 
     interface View extends BaseView<Presenter> {
-        List<Appointment> showScheduledAppointments(List<Appointment> scheduledAppointments);
+        void showScheduledAppointments(List<Appointment> scheduledAppointments);
     }
 
     interface Presenter extends BasePresenter {
