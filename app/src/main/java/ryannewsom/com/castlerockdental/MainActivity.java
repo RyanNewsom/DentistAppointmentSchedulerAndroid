@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public Toolbar mToolbar;
     @BindView(R.id.drawer_layout)
     public DrawerLayout mDrawerLayout;
-    public ActionBarDrawerToggle mDrawerToggle;
     @BindView(R.id.nav_view)
     public NavigationView mNavigationView;
 
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
@@ -75,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -89,8 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new AboutUsFragment()).commit();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
