@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
+import ryannewsom.com.castlerockdental.schedule.SchedulePresenter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void launchScheduleFragment() {
-        getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new ScheduleFragment()).commit();
+        ScheduleFragment scheduleFragment = new ScheduleFragment();
+        scheduleFragment.setPresenter(new SchedulePresenter(scheduleFragment));
+        getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, scheduleFragment).commit();
     }
 }

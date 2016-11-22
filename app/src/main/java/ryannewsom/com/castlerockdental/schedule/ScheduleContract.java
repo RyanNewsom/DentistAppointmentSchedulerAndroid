@@ -17,6 +17,7 @@ public interface ScheduleContract {
     }
 
     interface Presenter extends BasePresenter {
+        void refreshUI();
         void scheduledAppointmentClicked(Appointment appointment);
     }
 }

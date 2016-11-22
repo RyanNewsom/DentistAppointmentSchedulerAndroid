@@ -7,6 +7,11 @@ import model.appointment.Appointment;
  */
 
 public class SchedulePresenter implements ScheduleContract.Presenter {
+    private ScheduleContract.View mView;
+
+    public SchedulePresenter(ScheduleContract.View view){
+        mView = view;
+    }
     @Override
     public void onViewReady() {
 
@@ -20,6 +25,11 @@ public class SchedulePresenter implements ScheduleContract.Presenter {
     @Override
     public void stop() {
 
+    }
+
+    @Override
+    public void refreshUI() {
+        mView.showScheduledAppointments(null);
     }
 
     @Override
