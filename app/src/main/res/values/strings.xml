@@ -8,4 +8,7 @@
     <string name="castle_rock_dental">Castle Rock Dental</string>
     <string name="dr_newsom_castlerockdental_com">Dr.Newsom@castlerockdental.com</string>
     <string name="schedule">Schedule</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

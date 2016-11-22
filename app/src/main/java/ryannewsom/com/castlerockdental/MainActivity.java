@@ -23,23 +23,18 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        launchScheduleFragment();
+
+        
     }
 
     @Override
@@ -80,16 +75,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_schedule) {
+            launchScheduleFragment();
+        } else if (id == R.id.nav_make_appointment) {
+            getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new AppointmentsFragment()).commit();
         } else if (id == R.id.nav_about) {
-
+            getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new AboutUsFragment()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void launchScheduleFragment() {
+        getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new ScheduleFragment()).commit();
     }
 }
