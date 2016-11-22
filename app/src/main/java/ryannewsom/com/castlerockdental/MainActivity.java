@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
 import ryannewsom.com.castlerockdental.schedule.SchedulePresenter;
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
