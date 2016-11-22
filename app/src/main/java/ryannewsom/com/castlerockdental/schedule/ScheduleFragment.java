@@ -64,7 +64,7 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(new String[]{"Hello", "World", "How", "Is", "It", "Going"});
+        mAdapter = new AppointmentAdapter(new String[]{"Hello", "World", "How", "Is", "It", "Going"});
         mRecyclerView.setAdapter(mAdapter);
     }
 
