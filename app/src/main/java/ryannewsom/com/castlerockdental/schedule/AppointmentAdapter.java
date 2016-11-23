@@ -50,10 +50,13 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Appointment current = mAppointments.get(position);
-        String username = current.getUser().getName();
+        String username = "";
+        if(current.getUser() != null) {
+            username = current.getUser().getName();
+        }
 
         holder.mDateTextView.setText(current.getFormattedLocalTime());
-        holder.mPatientsName.setText(current.getUser().getName());
+        holder.mPatientsName.setText(username);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

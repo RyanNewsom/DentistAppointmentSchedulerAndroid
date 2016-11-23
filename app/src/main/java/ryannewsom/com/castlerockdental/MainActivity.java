@@ -12,6 +12,8 @@ import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ryannewsom.com.castlerockdental.appointments.AppointmentsFragment;
+import ryannewsom.com.castlerockdental.appointments.AppointmentsPresenter;
 import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
 import ryannewsom.com.castlerockdental.schedule.SchedulePresenter;
 
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_schedule) {
             launchScheduleFragment();
         } else if (id == R.id.nav_make_appointment) {
-            getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new AppointmentsFragment()).commit();
+            launchAppointmentsFragment();
         } else if (id == R.id.nav_about) {
             getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, new AboutUsFragment()).commit();
         }
@@ -98,5 +100,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ScheduleFragment scheduleFragment = new ScheduleFragment();
         scheduleFragment.setPresenter(new SchedulePresenter(scheduleFragment, getApplicationContext()));
         getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, scheduleFragment).commit();
+    }
+
+    private void launchAppointmentsFragment() {
+        AppointmentsFragment appointmentsFragment = new AppointmentsFragment();
+        appointmentsFragment.setPresenter(new AppointmentsPresenter(appointmentsFragment, getApplicationContext()));
+        getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, appointmentsFragment).commit();
     }
 }

@@ -19,9 +19,11 @@ public class Appointment {
 
     public Appointment(User user,Office office, long time){
         this.user = user;
-        date = new Date(time);
         this.office = office;
         this.time = time;
+    }
+
+    private Appointment(){
     }
 
     public void setUser(User user) {
@@ -30,10 +32,6 @@ public class Appointment {
 
     public User getUser() {
         return user;
-    }
-
-    public Date getDate() {
-        return new Date(time);
     }
 
     public Office getOffice() {
@@ -53,10 +51,11 @@ public class Appointment {
     }
 
     public String getFormattedLocalTime(){
+        date = new Date(time);
         String formattedTime = null;
 
         DateFormat df = new android.text.format.DateFormat();
-        df.format("MM-dd hh:mm", new Date(time));
+        formattedTime = (String) df.format("MM-dd hh:mm aaa", new Date(time));
         return formattedTime;
     }
 

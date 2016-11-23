@@ -1,4 +1,4 @@
-package ryannewsom.com.castlerockdental.schedule;
+package ryannewsom.com.castlerockdental.appointments;
 
 
 import android.os.Bundle;
@@ -16,12 +16,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
+import ryannewsom.com.castlerockdental.schedule.AppointmentAdapter;
+import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 
 
 /**
- * Displays the current Scheduled Appointments for the business
+ *
  */
-public class ScheduleFragment extends Fragment implements AppointmentContract.View {
+public class AppointmentsFragment extends Fragment implements AppointmentContract.View{
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
     public RecyclerView mRecyclerView;
@@ -30,19 +32,19 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    public ScheduleFragment() {
-
+    public AppointmentsFragment() {
+        // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public static AppointmentsFragment newInstance() {
+        AppointmentsFragment fragment = new AppointmentsFragment();
 
+        return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_schedule, container, false);
+        View v = inflater.inflate(R.layout.fragment_appointments, container, false);
         ButterKnife.bind(this, v);
         initRecyclerView();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -66,12 +68,6 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
-
-    @Override
-    public void setPresenter(AppointmentContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
-
     @Override
     public void showAppointments(List<Appointment> scheduledAppointments) {
         // specify an adapter (see also next example)
@@ -83,5 +79,10 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
         } else{
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void setPresenter(AppointmentContract.Presenter presenter) {
+        mPresenter = presenter;
     }
 }
