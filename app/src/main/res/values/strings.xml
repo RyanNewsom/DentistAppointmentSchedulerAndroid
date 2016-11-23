@@ -11,4 +11,5 @@
 
     <string name="available_appointments">Available Appointments</string>
     <string name="scheduled_appointments">Scheduled Appointments</string>
+    <string name="test">it worked</string>
 </resources>

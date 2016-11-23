@@ -11,26 +11,40 @@ import java.util.List;
 
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
+import ryannewsom.com.castlerockdental.appointments.AppointmentsFragment;
 
 /**
  * Adapter for Appointment data
  */
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
     private List<Appointment> mAppointments;
+    private AppointmentAdapterClickListener mClickListener;
 
     //Holds our views for each card
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private Appointment currentAppointment;
         public TextView mDateTextView;
         public TextView mPatientsName;
-        public ViewHolder(View v) {
+
+        private AppointmentAdapterClickListener mClickListener;
+
+        public ViewHolder(View v, AppointmentAdapterClickListener listener) {
             super(v);
+            mClickListener = listener;
             mDateTextView = (TextView) v.findViewById(R.id.date_textview);
             mPatientsName = (TextView) v.findViewById(R.id.patientname_textview);
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickListener.onAppointmentClicked(currentAppointment);
+                }
+            });
         }
     }
 
-    public AppointmentAdapter(@Nullable List<Appointment> appointments){
+    public AppointmentAdapter(AppointmentAdapterClickListener listener, @Nullable List<Appointment> appointments){
         super();
+        mClickListener = listener;
         mAppointments = appointments;
     }
 
@@ -39,8 +53,13 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     public AppointmentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.schedule_card, parent, false);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        ViewHolder vh = new ViewHolder(v);
+            }
+        });
+        ViewHolder vh = new ViewHolder(v, mClickListener);
         return vh;
     }
 
@@ -50,6 +69,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Appointment current = mAppointments.get(position);
+        holder.currentAppointment = current;
         String username = "";
         if(current.getUser() != null) {
             username = current.getUser().getName();

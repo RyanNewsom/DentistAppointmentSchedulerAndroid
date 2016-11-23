@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,13 +18,14 @@ import butterknife.ButterKnife;
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
 import ryannewsom.com.castlerockdental.schedule.AppointmentAdapter;
+import ryannewsom.com.castlerockdental.schedule.AppointmentAdapterClickListener;
 import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 
 
 /**
  *
  */
-public class AppointmentsFragment extends Fragment implements AppointmentContract.View{
+public class AppointmentsFragment extends Fragment implements AppointmentContract.View, AppointmentAdapterClickListener{
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
     public RecyclerView mRecyclerView;
@@ -76,7 +78,7 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
         mSwipeRefreshLayout.setRefreshing(false);
 
         if(mAdapter == null) {
-            mAdapter = new AppointmentAdapter(scheduledAppointments);
+            mAdapter = new AppointmentAdapter(this, scheduledAppointments);
             mRecyclerView.setAdapter(mAdapter);
         } else{
             mAdapter.notifyDataSetChanged();
@@ -86,5 +88,10 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
     @Override
     public void setPresenter(AppointmentContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void onAppointmentClicked(Appointment appointment) {
+        Toast.makeText(getContext(), getString(R.string.test), Toast.LENGTH_LONG).show();
     }
 }

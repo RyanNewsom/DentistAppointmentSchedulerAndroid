@@ -21,7 +21,7 @@ import ryannewsom.com.castlerockdental.R;
 /**
  * Displays the current Scheduled Appointments for the business
  */
-public class ScheduleFragment extends Fragment implements AppointmentContract.View {
+public class ScheduleFragment extends Fragment implements AppointmentContract.View, AppointmentAdapterClickListener {
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
     public RecyclerView mRecyclerView;
@@ -80,10 +80,15 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
         mSwipeRefreshLayout.setRefreshing(false);
 
         if(mAdapter == null) {
-            mAdapter = new AppointmentAdapter(scheduledAppointments);
+            mAdapter = new AppointmentAdapter(this, scheduledAppointments);
             mRecyclerView.setAdapter(mAdapter);
         } else{
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onAppointmentClicked(Appointment appointment) {
+        //do nothing
     }
 }
