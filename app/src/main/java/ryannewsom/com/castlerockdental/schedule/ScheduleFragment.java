@@ -53,6 +53,8 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
             }
         });
 
+        mPresenter.refreshUI();
+
         return v;
     }
 
@@ -63,10 +65,6 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        // specify an adapter (see also next example)
-        mAdapter = new AppointmentAdapter(new ArrayList<Appointment>());
-        mRecyclerView.setAdapter(mAdapter);
     }
 
 
@@ -77,6 +75,14 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
 
     @Override
     public void showScheduledAppointments(List<Appointment> scheduledAppointments) {
+        // specify an adapter (see also next example)
         mSwipeRefreshLayout.setRefreshing(false);
+
+        if(mAdapter == null) {
+            mAdapter = new AppointmentAdapter(scheduledAppointments);
+            mRecyclerView.setAdapter(mAdapter);
+        } else{
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }

@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Launches the scheduling fragment
     private void launchScheduleFragment() {
         ScheduleFragment scheduleFragment = new ScheduleFragment();
-        scheduleFragment.setPresenter(new SchedulePresenter(scheduleFragment));
+        scheduleFragment.setPresenter(new SchedulePresenter(scheduleFragment, getApplicationContext()));
         getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, scheduleFragment).commit();
     }
 }

@@ -15,7 +15,6 @@ import ryannewsom.com.castlerockdental.R;
 /**
  * Adapter for Appointment data
  */
-
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
     private List<Appointment> mAppointments;
 
@@ -51,6 +50,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Appointment current = mAppointments.get(position);
+        String username = current.getUser().getName();
 
         holder.mDateTextView.setText(current.getFormattedLocalTime());
         holder.mPatientsName.setText(current.getUser().getName());
@@ -59,7 +59,11 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mAppointments.size();
+        if(mAppointments != null) {
+            return mAppointments.size();
+        } else{
+            return 0;
+        }
     }
 
 }

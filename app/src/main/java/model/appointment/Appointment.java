@@ -13,13 +13,15 @@ import model.users.entityinfo.Office;
 public class Appointment {
     private String id;
     private User user;
-    private Date time;
+    private Date date;
+    private long time;
     private Office office;
 
-    public Appointment(User user, Date time, Office office){
+    public Appointment(User user,Office office, long time){
         this.user = user;
-        this.time = time;
+        date = new Date(time);
         this.office = office;
+        this.time = time;
     }
 
     public void setUser(User user) {
@@ -30,8 +32,8 @@ public class Appointment {
         return user;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getDate() {
+        return new Date(time);
     }
 
     public Office getOffice() {
@@ -46,11 +48,15 @@ public class Appointment {
         return id;
     }
 
+    public long getTime() {
+        return time;
+    }
+
     public String getFormattedLocalTime(){
         String formattedTime = null;
 
         DateFormat df = new android.text.format.DateFormat();
-        df.format("MM-dd hh:mm", time);
+        df.format("MM-dd hh:mm", new Date(time));
         return formattedTime;
     }
 
@@ -59,7 +65,7 @@ public class Appointment {
         return "Appointment{" +
                 "mId='" + id + '\'' +
                 ", mUser=" + user +
-                ", mTime=" + time +
+                ", mTime=" + date +
                 ", mOffice=" + office +
                 '}';
     }
