@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link AppointmentsFragment#newInstance} factory method to
- * create an instance of this fragment.
+ *
  */
 public class AppointmentsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match

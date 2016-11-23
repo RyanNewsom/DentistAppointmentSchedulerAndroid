@@ -15,6 +15,9 @@ import butterknife.ButterKnife;
 import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
 import ryannewsom.com.castlerockdental.schedule.SchedulePresenter;
 
+/**
+ * Main Activity with the toolbar and Nav Drawer. Retains the fragments.
+ */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.toolbar)
     public Toolbar mToolbar;
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    //Launches the scheduling fragment
     private void launchScheduleFragment() {
         ScheduleFragment scheduleFragment = new ScheduleFragment();
         scheduleFragment.setPresenter(new SchedulePresenter(scheduleFragment));

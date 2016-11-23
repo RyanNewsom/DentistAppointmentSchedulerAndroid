@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -19,7 +20,7 @@ import ryannewsom.com.castlerockdental.R;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Displays the current Scheduled Appointments for the business
  */
 public class ScheduleFragment extends Fragment implements ScheduleContract.View {
     private ScheduleContract.Presenter mPresenter;
@@ -64,7 +65,7 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new AppointmentAdapter(new String[]{"Hello", "World", "How", "Is", "It", "Going"});
+        mAdapter = new AppointmentAdapter(new ArrayList<Appointment>());
         mRecyclerView.setAdapter(mAdapter);
     }
 

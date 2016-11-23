@@ -1,45 +1,45 @@
 package ryannewsom.com.castlerockdental.schedule;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
+import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
 
 /**
- * Created by Ryan on 11/21/2016.
+ * Adapter for Appointment data
  */
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
-    private String[] mDataset;
+    private List<Appointment> mAppointments;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    //Holds our views for each card
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView mTextView;
+        public TextView mDateTextView;
+        public TextView mPatientsName;
         public ViewHolder(View v) {
             super(v);
-            mTextView = (TextView) v.findViewById(R.id.date_textview);
+            mDateTextView = (TextView) v.findViewById(R.id.date_textview);
+            mPatientsName = (TextView) v.findViewById(R.id.patientname_textview);
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public AppointmentAdapter(String[] myDataset) {
-        mDataset = myDataset;
+    public AppointmentAdapter(@Nullable List<Appointment> appointments){
+        super();
+        mAppointments = appointments;
     }
 
-    // Create new views (invoked by the layout manager)
+
     @Override
-    public AppointmentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                            int viewType) {
-        // create a new view
+    public AppointmentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.schedule_card, parent, false);
-        // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -50,14 +50,16 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        Appointment current = mAppointments.get(position);
 
+        holder.mDateTextView.setText(current.getFormattedLocalTime());
+        holder.mPatientsName.setText(current.getUser().getName());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mAppointments.size();
     }
 
 }

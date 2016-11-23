@@ -1,5 +1,7 @@
 package model.appointment;
 
+import android.text.format.DateFormat;
+
 import java.util.Date;
 
 import model.users.User;
@@ -42,6 +44,14 @@ public class Appointment {
 
     public String getAppointmentId() {
         return id;
+    }
+
+    public String getFormattedLocalTime(){
+        String formattedTime = null;
+
+        DateFormat df = new android.text.format.DateFormat();
+        df.format("MM-dd hh:mm", time);
+        return formattedTime;
     }
 
     @Override

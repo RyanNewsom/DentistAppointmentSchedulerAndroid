@@ -3,7 +3,7 @@ package ryannewsom.com.castlerockdental.schedule;
 import model.appointment.Appointment;
 
 /**
- * Created by Ryan on 11/21/2016.
+ * Presenter for the Scheduling data
  */
 
 public class SchedulePresenter implements ScheduleContract.Presenter {
