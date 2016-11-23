@@ -51,8 +51,8 @@ public class Appointment {
     }
 
     public String getFormattedLocalTime(){
-        date = new Date(time);
         String formattedTime = null;
+        date = new Date(time);
 
         DateFormat df = new android.text.format.DateFormat();
         formattedTime = (String) df.format("MM-dd hh:mm aaa", new Date(time));

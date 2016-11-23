@@ -54,6 +54,8 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
             }
         });
 
+        getActivity().setTitle(getString(R.string.available_appointments));
+
         mPresenter.refreshUI();
 
         return v;
