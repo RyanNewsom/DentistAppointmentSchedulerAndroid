@@ -53,6 +53,7 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
         });
 
         getActivity().setTitle(getString(R.string.scheduled_appointments));
+        mSwipeRefreshLayout.setRefreshing(true);
 
         mPresenter.refreshUI();
 

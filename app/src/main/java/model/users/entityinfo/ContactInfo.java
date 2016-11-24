@@ -1,9 +1,11 @@
 package model.users.entityinfo;
 
+import java.io.Serializable;
+
 /**
  * Contact Info
  */
-public class ContactInfo {
+public class ContactInfo implements Serializable{
     private String cellNumber;
     private PhysicalAddress physicalAddress;
 

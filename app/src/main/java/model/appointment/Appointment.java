@@ -2,6 +2,7 @@ package model.appointment;
 
 import android.text.format.DateFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import model.users.User;
@@ -10,8 +11,8 @@ import model.users.entityinfo.Office;
 /**
  * Appointment
  */
-public class Appointment {
-    private String id;
+public class Appointment implements Serializable{
+    private String appointmentId;
     private User user;
     private Date date;
     private long time;
@@ -39,11 +40,11 @@ public class Appointment {
     }
 
     public void setAppointmentId(final String id) {
-        this.id = id;
+        this.appointmentId = id;
     }
 
     public String getAppointmentId() {
-        return id;
+        return appointmentId;
     }
 
     public long getTime() {
@@ -62,7 +63,7 @@ public class Appointment {
     @Override
     public String toString() {
         return "Appointment{" +
-                "mId='" + id + '\'' +
+                "mId='" + appointmentId + '\'' +
                 ", mUser=" + user +
                 ", mTime=" + date +
                 ", mOffice=" + office +

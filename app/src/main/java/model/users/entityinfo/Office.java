@@ -1,10 +1,12 @@
 package model.users.entityinfo;
 
 
+import java.io.Serializable;
+
 /**
  * Office
  */
-public class Office {
+public class Office implements Serializable{
     private String id;
     private ContactInfo contactInfo;
 

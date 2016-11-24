@@ -18,16 +18,7 @@ public class Utils {
         return Arrays.asList(arr);
     }
 
-    /**
-     * Created by Ryan on 11/22/2016.
-     */
-
-    public static class ResponseListener implements Response.Listener<String> {
-        @Override
-        public void onResponse(String response) {
-            Gson gson = new Gson();
-            Appointment appointment = gson.fromJson(response, Appointment.class);
-            //notify listener
-        }
+    public static String convertPojoToString(Object obj){
+        return new Gson().toJson(obj);
     }
 }

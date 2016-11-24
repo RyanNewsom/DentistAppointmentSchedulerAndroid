@@ -1,9 +1,11 @@
 package model.users.entityinfo;
 
+import java.io.Serializable;
+
 /**
  * Physical Address
  */
-public class PhysicalAddress {
+public class PhysicalAddress implements Serializable{
     private int streetNumber;
     private String street;
     private int zipCode;

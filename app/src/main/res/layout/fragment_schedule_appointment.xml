@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ryannewsom.com.castlerockdental.scheduling.ScheduleAppointmentFragment"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Default_TextField"
+        android:id="@+id/date_textview"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstname_textview"
+            style="@style/Default_TextField"
+            android:hint="First Name"
+            android:maxLines="1" />
+
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastname_textview"
+            style="@style/Default_TextField"
+            android:hint="Last Name"
+            android:maxLines="1" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_marginTop="@dimen/vertical_spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/streetnum_textview"
+            android:hint="Street Number"
+            style="@style/Default_TextField"
+            />
+
+        <EditText
+            android:layout_marginTop="@dimen/vertical_spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/street_textview"
+            android:hint="Street Name"
+            style="@style/Default_TextField"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_marginTop="@dimen/vertical_spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/zipcode_textview"
+            android:hint="Zip Code"
+            style="@style/Default_TextField"
+            />
+
+        <EditText
+            android:layout_marginTop="@dimen/vertical_spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/city_textview"
+            android:hint="City"
+            style="@style/Default_TextField"
+            />
+
+        <EditText
+            android:layout_marginTop="@dimen/vertical_spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/state_textview"
+            android:hint="state"
+            style="@style/Default_TextField"
+            />
+    </LinearLayout>
+
+
+
+    <EditText
+        android:layout_marginTop="@dimen/vertical_spacing_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cellnumber_textview"
+        android:hint="Cell Number"
+        style="@style/Default_TextField"
+        />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit_button"
+        android:layout_marginTop="@dimen/vertical_spacing_normal"
+        style="@style/Default_TextField"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+</LinearLayout>

@@ -37,7 +37,6 @@ public class AppointmentsPresenter implements AppointmentContract.Presenter {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         List<Appointment> appointments = Utils.convertJsonStringToList(response, Appointment[].class);
                         mView.showAppointments(appointments);
                     }

@@ -10,8 +10,8 @@ import ryannewsom.com.castlerockdental.base.BaseView;
  * Created by Ryan on 11/21/2016.
  */
 
-public interface AppointmentContract {
-
+public interface AppointmentContract
+{
     interface View extends BaseView<Presenter> {
         void showAppointments(List<Appointment> scheduledAppointments);
     }

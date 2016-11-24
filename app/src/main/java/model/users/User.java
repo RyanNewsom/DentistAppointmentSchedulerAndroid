@@ -1,12 +1,14 @@
 package model.users;
 
 
+import java.io.Serializable;
+
 import model.users.entityinfo.ContactInfo;
 
 /**
  * User
  */
-public class User {
+public class User implements Serializable{
     private String userId;
     private String firstName;
     private String lastName;
