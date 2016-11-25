@@ -17,12 +17,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import model.appointment.Appointment;
-import model.users.User;
 import model.users.entityinfo.ContactInfo;
 import model.users.entityinfo.PhysicalAddress;
 import ryannewsom.com.castlerockdental.R;
-import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
-import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,19 +30,19 @@ public class ScheduleAppointmentFragment extends Fragment implements SchedulingC
     private SchedulingContract.Presenter mPresenter;
     protected Appointment mAppointment;
 
-    @BindView(R.id.firstname_textview)
+    @BindView(R.id.name_textview)
     protected EditText mFirstNameView;
 
     @BindView(R.id.lastname_textview)
     protected EditText mLastNameView;
 
-    @BindView(R.id.streetnum_textview)
+    @BindView(R.id.streetname_textview)
     protected EditText mStreetNumView;
 
     @BindView(R.id.street_textview)
     protected EditText mStreetNameView;
 
-    @BindView(R.id.zipcode_textview)
+    @BindView(R.id.citystatezip_textview)
     protected EditText mZipView;
 
     @BindView(R.id.city_textview)

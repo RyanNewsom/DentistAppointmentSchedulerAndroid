@@ -39,4 +39,12 @@ public class PhysicalAddress implements Serializable{
     public String getStreet() {
         return street;
     }
+
+    public String getFullStreet(){
+        return streetNumber + " " + street;
+    }
+
+    public String getFullCityStateZip() {
+        return city + ", " + state + " " + zipCode;
+    }
 }

@@ -28,7 +28,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/firstname_textview"
+            android:id="@+id/name_textview"
             style="@style/Default_TextField"
             android:hint="First Name"
             android:maxLines="1" />
@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/vertical_spacing_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/streetnum_textview"
+            android:id="@+id/streetname_textview"
             android:hint="Street Number"
             style="@style/Default_TextField"
             />
@@ -78,7 +78,7 @@
             android:layout_marginTop="@dimen/vertical_spacing_normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/zipcode_textview"
+            android:id="@+id/citystatezip_textview"
             android:hint="Zip Code"
             style="@style/Default_TextField"
             />

@@ -60,6 +60,7 @@ public class Appointment implements Serializable{
         return formattedTime;
     }
 
+
     @Override
     public String toString() {
         return "Appointment{" +
