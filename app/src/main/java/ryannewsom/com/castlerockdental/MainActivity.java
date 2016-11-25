@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mNavigationView.setNavigationItemSelectedListener(this);
         mNavigationView.setCheckedItem(R.id.nav_schedule);
 
-        launchScheduleFragment();
+        if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            launchScheduleFragment();
+        }
     }
 
     @Override

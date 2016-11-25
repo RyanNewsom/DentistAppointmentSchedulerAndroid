@@ -3,6 +3,8 @@ package model.appointment;
 import android.text.format.DateFormat;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import model.users.User;
@@ -61,6 +63,11 @@ public class Appointment implements Serializable, Comparable<Appointment>{
 
         DateFormat df = new android.text.format.DateFormat();
         formattedTime = (String) df.format("MM-dd hh:mm aaa", new Date(time));
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE");
+        String dayOfWeek = dateFormat.format(date);
+
+        formattedTime = dayOfWeek + " "  + formattedTime;
 
         return formattedTime;
     }

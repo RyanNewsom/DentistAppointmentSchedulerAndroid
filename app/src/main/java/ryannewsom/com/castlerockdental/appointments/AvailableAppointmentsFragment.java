@@ -2,6 +2,7 @@ package ryannewsom.com.castlerockdental.appointments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -46,6 +47,14 @@ public class AvailableAppointmentsFragment extends Fragment implements Appointme
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(mPresenter == null){
+            mPresenter = new AppointmentsPresenter(this, getActivity().getApplicationContext());
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_appointments, container, false);
@@ -58,7 +67,6 @@ public class AvailableAppointmentsFragment extends Fragment implements Appointme
                 mPresenter.refreshUI();
             }
         });
-        getActivity().setTitle(getString(R.string.available_appointments));
 
         return v;
     }
@@ -66,6 +74,7 @@ public class AvailableAppointmentsFragment extends Fragment implements Appointme
     @Override
     public void onStart() {
         super.onStart();
+        getActivity().setTitle(getString(R.string.available_appointments));
         mSwipeRefreshLayout.setRefreshing(true);
         mPresenter.refreshUI();
     }

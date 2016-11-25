@@ -18,6 +18,7 @@ import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
 import ryannewsom.com.castlerockdental.appointments.AppointmentContract;
 import ryannewsom.com.castlerockdental.appointments.AppointmentFragment;
+import ryannewsom.com.castlerockdental.appointments.AppointmentsPresenter;
 
 
 /**
@@ -40,6 +41,10 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(mPresenter == null){
+            mPresenter = new AppointmentsPresenter(this, getActivity().getApplicationContext());
+        }
+
     }
 
     @Override
@@ -52,7 +57,7 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
                 mPresenter.refreshUI();
             }
         });
-
+        initRecyclerView();
         getActivity().setTitle(getString(R.string.scheduled_appointments));
         mSwipeRefreshLayout.setRefreshing(true);
 
