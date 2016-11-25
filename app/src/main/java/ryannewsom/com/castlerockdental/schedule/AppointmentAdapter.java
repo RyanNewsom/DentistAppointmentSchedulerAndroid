@@ -11,7 +11,6 @@ import java.util.List;
 
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
-import ryannewsom.com.castlerockdental.appointments.AppointmentsFragment;
 
 /**
  * Adapter for Appointment data

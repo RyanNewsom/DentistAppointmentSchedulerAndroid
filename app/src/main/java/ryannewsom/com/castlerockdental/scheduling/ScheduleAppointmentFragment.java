@@ -1,6 +1,7 @@
 package ryannewsom.com.castlerockdental.scheduling;
 
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,7 +28,7 @@ import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
  * A simple {@link Fragment} subclass.
  */
 public class ScheduleAppointmentFragment extends Fragment implements SchedulingContract.View{
-    protected static final String APPOINTMENT = "APPOINTMENT";
+    public static final String APPOINTMENT = "APPOINTMENT";
 
     private SchedulingContract.Presenter mPresenter;
     protected Appointment mAppointment;
@@ -102,8 +103,8 @@ public class ScheduleAppointmentFragment extends Fragment implements SchedulingC
     @OnClick(R.id.submit_button)
     public void onSubmit(){
         //field validation
-        String firstName = mFirstNameView.getText().toString();
-        String lastName = mLastNameView.getText().toString();
+        final String firstName = mFirstNameView.getText().toString();
+        final String lastName = mLastNameView.getText().toString();
         int streetNumber = Integer.parseInt(mStreetNumView.getText().toString());
         String street = mStreetNameView.getText().toString();
         int zipCode = Integer.parseInt(mZipView.getText().toString());
@@ -112,19 +113,38 @@ public class ScheduleAppointmentFragment extends Fragment implements SchedulingC
         String cellNumber = mCellNumberView.getText().toString();
 
         PhysicalAddress address = new PhysicalAddress(streetNumber, street, city, state, zipCode);
-        ContactInfo contactInfo = new ContactInfo(cellNumber, address);
+        final ContactInfo contactInfo = new ContactInfo(cellNumber, address);
 
-        mPresenter.submitAppointment(firstName, lastName, contactInfo);
-        //submit updated appointment
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.submitAppointment(firstName, lastName, contactInfo);
+            }
+        }).start();
     }
 
     @Override
-    public void showWorking(boolean show) {
-        if(show) {
-            mProgressSpinner.setVisibility(View.VISIBLE);
-        } else {
-            mProgressSpinner.setVisibility(View.INVISIBLE);
-        }
+    public void showWorking(final boolean show) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(show) {
+                    mProgressSpinner.setVisibility(View.VISIBLE);
+                } else {
+                    mProgressSpinner.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void showSuccess(AlertDialog alertDialog) {
+        alertDialog.show();
+    }
+
+    @Override
+    public void showFailure(AlertDialog alertDialog) {
+        alertDialog.show();
     }
 
     @Override

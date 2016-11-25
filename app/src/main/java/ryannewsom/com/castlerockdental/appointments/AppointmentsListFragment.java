@@ -26,7 +26,8 @@ import ryannewsom.com.castlerockdental.scheduling.SchedulingPresenter;
 /**
  *
  */
-public class AppointmentsFragment extends Fragment implements AppointmentContract.View, AppointmentAdapterClickListener{
+public class AppointmentsListFragment extends Fragment implements AppointmentContract.View,
+        AppointmentAdapterClickListener{
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
     public RecyclerView mRecyclerView;
@@ -35,20 +36,22 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    public AppointmentsFragment() {
+    public AppointmentsListFragment() {
         // Required empty public constructor
     }
 
-    public static AppointmentsFragment newInstance() {
-        AppointmentsFragment fragment = new AppointmentsFragment();
+    public static AppointmentsListFragment newInstance() {
+        AppointmentsListFragment fragment = new AppointmentsListFragment();
 
         return fragment;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_appointments, container, false);
         ButterKnife.bind(this, v);
+
         initRecyclerView();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -56,7 +59,6 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
                 mPresenter.refreshUI();
             }
         });
-
         getActivity().setTitle(getString(R.string.available_appointments));
 
         return v;
@@ -83,12 +85,10 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
         // specify an adapter (see also next example)
         mSwipeRefreshLayout.setRefreshing(false);
 
-        if(mAdapter == null) {
-            mAdapter = new AppointmentAdapter(this, scheduledAppointments);
-            mRecyclerView.setAdapter(mAdapter);
-        } else{
-            mAdapter.notifyDataSetChanged();
-        }
+        mAdapter = new AppointmentAdapter(this, scheduledAppointments);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -101,6 +101,7 @@ public class AppointmentsFragment extends Fragment implements AppointmentContrac
         ScheduleAppointmentFragment fragment = ScheduleAppointmentFragment.newInstance(appointment);
         fragment.setPresenter(new SchedulingPresenter(fragment, appointment, getContext()));
 
-        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, fragment).commit();
+        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main,
+                fragment).commit();
     }
 }

@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ryannewsom.com.castlerockdental.appointments.AppointmentFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstname_textview"
+            style="@style/Default_TextField"
+            android:text="First Name"
+            android:maxLines="1" />
+        
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastname_textview"
+            style="@style/Default_TextField"
+            android:text="Last Name"
+            android:maxLines="1" />
+
+        <EditText
+            android:layout_marginTop="@dimen/vertical_spacing_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cellnumber_textview"
+            android:text="Cell Number"
+            style="@style/Default_TextField"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_marginTop="@dimen/vertical_spacing_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/streetnum_textview"
+                android:text="Street Number"
+                style="@style/Default_TextField"
+                />
+
+            <EditText
+                android:layout_marginTop="@dimen/vertical_spacing_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/street_textview"
+                android:text="Street Name"
+                style="@style/Default_TextField"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_marginTop="@dimen/vertical_spacing_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/zipcode_textview"
+                android:text="Zip Code"
+                style="@style/Default_TextField"
+                />
+
+            <EditText
+                android:layout_marginTop="@dimen/vertical_spacing_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/city_textview"
+                android:text="City"
+                style="@style/Default_TextField"
+                />
+
+            <EditText
+                android:layout_marginTop="@dimen/vertical_spacing_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/state_textview"
+                android:text="State"
+                style="@style/Default_TextField"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/banner"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Default_Title"
+            android:text="12/12/2012"
+            android:id="@+id/date_textview"/>
+    </FrameLayout>
+</RelativeLayout>

@@ -3,6 +3,7 @@ package ryannewsom.com.castlerockdental.schedule;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -46,6 +47,7 @@ public class SchedulePresenter implements AppointmentContract.Presenter {
 
     @Override
     public void refreshUI() {
+
         StringRequest scheduleRequest = new StringRequest(Request.Method.GET, Config.SCHEDULED_APPOINTMENTS_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -60,6 +62,11 @@ public class SchedulePresenter implements AppointmentContract.Presenter {
                 Log.e(TAG, "Request Failed: " + error.getLocalizedMessage());
             }
         });
+
+        scheduleRequest.setRetryPolicy(new DefaultRetryPolicy(
+                Config.TIMEOUT_TIME,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         mRequestQueue.add(scheduleRequest);
     }

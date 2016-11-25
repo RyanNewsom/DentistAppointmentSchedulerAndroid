@@ -1,5 +1,7 @@
 package ryannewsom.com.castlerockdental.scheduling;
 
+import android.app.AlertDialog;
+
 import model.users.entityinfo.ContactInfo;
 import ryannewsom.com.castlerockdental.base.BasePresenter;
 import ryannewsom.com.castlerockdental.base.BaseView;
@@ -12,6 +14,8 @@ import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 public interface SchedulingContract {
     interface View extends BaseView<SchedulingContract.Presenter> {
         void showWorking(boolean show);
+        void showSuccess(AlertDialog alertDialog);
+        void showFailure(AlertDialog alertDialog);
     }
 
     interface Presenter extends BasePresenter {

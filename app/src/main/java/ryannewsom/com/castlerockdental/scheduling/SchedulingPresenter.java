@@ -1,5 +1,6 @@
 package ryannewsom.com.castlerockdental.scheduling;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -21,6 +22,7 @@ import model.appointment.Appointment;
 import model.users.User;
 import model.users.entityinfo.ContactInfo;
 import ryannewsom.com.castlerockdental.networking.Config;
+import ryannewsom.com.castlerockdental.networking.NetworkingError;
 import ryannewsom.com.castlerockdental.networking.Utils;
 
 /**
@@ -60,6 +62,12 @@ public class SchedulingPresenter implements SchedulingContract.Presenter {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, error.toString());
+                NetworkingError networkingError;
+                String json = new String(error.networkResponse.data);
+
+                networkingError = Utils.convertJsonStringToPojo(json, NetworkingError.class);
+                AlertDialog dialog = DialogFactory.getDialogForError(mView.getActivity(), networkingError);
+                mView.showFailure(dialog);
                 mView.showWorking(false);
             }
         }) {

@@ -18,6 +18,12 @@ public class Utils {
         return Arrays.asList(arr);
     }
 
+    public static <T> T convertJsonStringToPojo(String json, Class<T> tClass){
+        Gson gson = new Gson();
+
+        return tClass.cast(gson.fromJson(json, tClass));
+    }
+
     public static String convertPojoToString(Object obj){
         return new Gson().toJson(obj);
     }

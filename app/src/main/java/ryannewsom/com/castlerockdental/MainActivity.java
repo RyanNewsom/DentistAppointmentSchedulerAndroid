@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ryannewsom.com.castlerockdental.appointments.AppointmentsFragment;
+import ryannewsom.com.castlerockdental.appointments.AppointmentsListFragment;
 import ryannewsom.com.castlerockdental.appointments.AppointmentsPresenter;
 import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
 import ryannewsom.com.castlerockdental.schedule.SchedulePresenter;
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void launchAppointmentsFragment() {
-        AppointmentsFragment appointmentsFragment = new AppointmentsFragment();
+        AppointmentsListFragment appointmentsFragment = new AppointmentsListFragment();
         appointmentsFragment.setPresenter(new AppointmentsPresenter(appointmentsFragment, getApplicationContext()));
         getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, appointmentsFragment).commit();
     }

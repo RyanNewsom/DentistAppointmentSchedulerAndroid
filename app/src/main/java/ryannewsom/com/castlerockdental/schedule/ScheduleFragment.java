@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
+import ryannewsom.com.castlerockdental.appointments.AppointmentFragment;
 
 
 /**
@@ -80,16 +81,14 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
         // specify an adapter (see also next example)
         mSwipeRefreshLayout.setRefreshing(false);
 
-        if(mAdapter == null) {
-            mAdapter = new AppointmentAdapter(this, scheduledAppointments);
-            mRecyclerView.setAdapter(mAdapter);
-        } else{
-            mAdapter.notifyDataSetChanged();
-        }
+        mAdapter = new AppointmentAdapter(this, scheduledAppointments);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onAppointmentClicked(Appointment appointment) {
-        //do nothing
+        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main,
+                AppointmentFragment.newInstance(appointment)).commit();
     }
 }
