@@ -11,14 +11,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Collections;
 import java.util.List;
 
 import model.appointment.Appointment;
+import ryannewsom.com.castlerockdental.appointments.AppointmentContract;
 import ryannewsom.com.castlerockdental.networking.Config;
 import ryannewsom.com.castlerockdental.networking.Utils;
 
 /**
- * Presenter for the Scheduling data
+ * Get Presenter for the Scheduling data
  */
 public class SchedulePresenter implements AppointmentContract.Presenter {
     private RequestQueue mRequestQueue;
@@ -53,6 +55,8 @@ public class SchedulePresenter implements AppointmentContract.Presenter {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         List<Appointment> appointments = Utils.convertJsonStringToList(response, Appointment[].class);
+
+                        Collections.sort(appointments);
                         mView.showAppointments(appointments);
                     }
                 }, new Response.ErrorListener() {

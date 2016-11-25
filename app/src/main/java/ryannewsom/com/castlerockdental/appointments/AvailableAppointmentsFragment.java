@@ -2,6 +2,7 @@ package ryannewsom.com.castlerockdental.appointments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +19,6 @@ import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
 import ryannewsom.com.castlerockdental.schedule.AppointmentAdapter;
 import ryannewsom.com.castlerockdental.schedule.AppointmentAdapterClickListener;
-import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 import ryannewsom.com.castlerockdental.scheduling.ScheduleAppointmentFragment;
 import ryannewsom.com.castlerockdental.scheduling.SchedulingPresenter;
 
@@ -26,7 +26,7 @@ import ryannewsom.com.castlerockdental.scheduling.SchedulingPresenter;
 /**
  * Displays the currently available appointments
  */
-public class AppointmentsListFragment extends Fragment implements AppointmentContract.View,
+public class AvailableAppointmentsFragment extends Fragment implements AppointmentContract.View,
         AppointmentAdapterClickListener{
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
@@ -36,14 +36,22 @@ public class AppointmentsListFragment extends Fragment implements AppointmentCon
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    public AppointmentsListFragment() {
+    public AvailableAppointmentsFragment() {
         // Required empty public constructor
     }
 
-    public static AppointmentsListFragment newInstance() {
-        AppointmentsListFragment fragment = new AppointmentsListFragment();
+    public static AvailableAppointmentsFragment newInstance() {
+        AvailableAppointmentsFragment fragment = new AvailableAppointmentsFragment();
 
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(mPresenter == null){
+            mPresenter = new AppointmentsPresenter(this, getActivity().getApplicationContext());
+        }
     }
 
     @Override
@@ -59,7 +67,6 @@ public class AppointmentsListFragment extends Fragment implements AppointmentCon
                 mPresenter.refreshUI();
             }
         });
-        getActivity().setTitle(getString(R.string.available_appointments));
 
         return v;
     }
@@ -67,6 +74,7 @@ public class AppointmentsListFragment extends Fragment implements AppointmentCon
     @Override
     public void onStart() {
         super.onStart();
+        getActivity().setTitle(getString(R.string.available_appointments));
         mSwipeRefreshLayout.setRefreshing(true);
         mPresenter.refreshUI();
     }

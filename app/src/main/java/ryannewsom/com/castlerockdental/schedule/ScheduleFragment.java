@@ -16,7 +16,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
+import ryannewsom.com.castlerockdental.appointments.AppointmentContract;
 import ryannewsom.com.castlerockdental.appointments.AppointmentFragment;
+import ryannewsom.com.castlerockdental.appointments.AppointmentsPresenter;
 
 
 /**
@@ -39,26 +41,34 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(mPresenter == null){
+            mPresenter = new AppointmentsPresenter(this, getActivity().getApplicationContext());
+        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this, v);
-        initRecyclerView();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 mPresenter.refreshUI();
             }
         });
-
+        initRecyclerView();
         getActivity().setTitle(getString(R.string.scheduled_appointments));
         mSwipeRefreshLayout.setRefreshing(true);
 
         mPresenter.refreshUI();
 
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     private void initRecyclerView() {
