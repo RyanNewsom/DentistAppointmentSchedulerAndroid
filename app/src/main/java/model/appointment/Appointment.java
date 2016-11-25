@@ -11,7 +11,7 @@ import model.users.entityinfo.Office;
 /**
  * Appointment
  */
-public class Appointment implements Serializable{
+public class Appointment implements Serializable, Comparable<Appointment>{
     private String appointmentId;
     private User user;
     private Date date;
@@ -74,5 +74,10 @@ public class Appointment implements Serializable{
                 ", mTime=" + date +
                 ", mOffice=" + office +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Appointment a) {
+        return (int) (time - a.time);
     }
 }

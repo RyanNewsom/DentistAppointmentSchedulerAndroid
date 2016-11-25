@@ -1,4 +1,4 @@
-package ryannewsom.com.castlerockdental.schedule;
+package ryannewsom.com.castlerockdental.appointments;
 
 import java.util.List;
 

@@ -18,7 +18,6 @@ import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
 import ryannewsom.com.castlerockdental.schedule.AppointmentAdapter;
 import ryannewsom.com.castlerockdental.schedule.AppointmentAdapterClickListener;
-import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 import ryannewsom.com.castlerockdental.scheduling.ScheduleAppointmentFragment;
 import ryannewsom.com.castlerockdental.scheduling.SchedulingPresenter;
 
@@ -26,7 +25,7 @@ import ryannewsom.com.castlerockdental.scheduling.SchedulingPresenter;
 /**
  * Displays the currently available appointments
  */
-public class AppointmentsListFragment extends Fragment implements AppointmentContract.View,
+public class AvailableAppointmentsFragment extends Fragment implements AppointmentContract.View,
         AppointmentAdapterClickListener{
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
@@ -36,12 +35,12 @@ public class AppointmentsListFragment extends Fragment implements AppointmentCon
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    public AppointmentsListFragment() {
+    public AvailableAppointmentsFragment() {
         // Required empty public constructor
     }
 
-    public static AppointmentsListFragment newInstance() {
-        AppointmentsListFragment fragment = new AppointmentsListFragment();
+    public static AvailableAppointmentsFragment newInstance() {
+        AvailableAppointmentsFragment fragment = new AvailableAppointmentsFragment();
 
         return fragment;
     }

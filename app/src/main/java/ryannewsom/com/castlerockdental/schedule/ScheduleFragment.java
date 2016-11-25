@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
+import ryannewsom.com.castlerockdental.appointments.AppointmentContract;
 import ryannewsom.com.castlerockdental.appointments.AppointmentFragment;
 
 
@@ -45,7 +46,6 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this, v);
-        initRecyclerView();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -59,6 +59,11 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
         mPresenter.refreshUI();
 
         return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     private void initRecyclerView() {

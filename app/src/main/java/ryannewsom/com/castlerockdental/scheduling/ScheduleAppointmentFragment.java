@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import model.users.entityinfo.PhysicalAddress;
 import ryannewsom.com.castlerockdental.R;
 
 /**
- * View which allows Scheduling of an Appointment
+ * View which aShollows Scheduling of an Appointment
  */
 public class ScheduleAppointmentFragment extends Fragment implements SchedulingContract.View{
     public static final String APPOINTMENT = "APPOINTMENT";
@@ -83,6 +84,7 @@ public class ScheduleAppointmentFragment extends Fragment implements SchedulingC
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_schedule_appointment, container, false);
         ButterKnife.bind(this, v);
+        getActivity().setTitle("Make Appointment");
         mDateView.setText(mAppointment.getFormattedLocalTime());
 
         return v;

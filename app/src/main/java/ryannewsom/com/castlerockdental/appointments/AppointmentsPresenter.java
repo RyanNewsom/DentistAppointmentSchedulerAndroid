@@ -15,7 +15,6 @@ import java.util.List;
 import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.networking.Config;
 import ryannewsom.com.castlerockdental.networking.Utils;
-import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 
 /**
  * Handles presentation for the list of unscheduled appointments
