@@ -12,11 +12,23 @@ import ryannewsom.com.castlerockdental.base.BaseView;
 public interface AppointmentContract
 {
     interface View extends BaseView<Presenter> {
+        /**
+         * Show the appointments
+         * @param scheduledAppointments - latest list of scheduled appointments
+         */
         void showAppointments(List<Appointment> scheduledAppointments);
     }
 
     interface Presenter extends BasePresenter {
+        /**
+         * UI needs to be refreshed
+         */
         void refreshUI();
+
+        /**
+         * An Appointment was clicked
+         * @param appointment - appointment that was clicked
+         */
         void AppointmentClicked(Appointment appointment);
     }
 }

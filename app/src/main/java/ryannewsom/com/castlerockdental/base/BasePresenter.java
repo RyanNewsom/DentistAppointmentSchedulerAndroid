@@ -1,11 +1,21 @@
 package ryannewsom.com.castlerockdental.base;
 
 /**
- * Created by Ryan on 11/21/2016.
+ * Base Presenter for MVP architecture
  */
-
 public interface BasePresenter {
+    /**
+     * Ties to activity lifecycle
+     */
     void onViewReady();
+
+    /**
+     * Ties to activity lifecycle
+     */
     void start();
+
+    /**
+     * Ties to activity lifecycle
+     */
     void stop();
 }

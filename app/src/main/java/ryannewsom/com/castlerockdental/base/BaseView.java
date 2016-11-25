@@ -3,10 +3,18 @@ package ryannewsom.com.castlerockdental.base;
 import android.app.Activity;
 
 /**
- * Created by Ryan on 11/21/2016.
+ * BaseView
  */
-
 public interface BaseView<T> {
+    /**
+     * Sets this views presenter
+     * @param presenter - presenter to be used
+     */
     void setPresenter(T presenter);
+
+    /**
+     * Gets the activity
+     * @return - activity
+     */
     Activity getActivity();
 }

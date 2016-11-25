@@ -11,12 +11,32 @@ import ryannewsom.com.castlerockdental.base.BaseView;
  */
 public interface SchedulingContract {
     interface View extends BaseView<SchedulingContract.Presenter> {
+        /**
+         * Show the user that the view is working
+         * @param show - should show
+         */
         void showWorking(boolean show);
+
+        /**
+         * Show successful request
+         * @param alertDialog - alert dialog to be shown
+         */
         void showSuccess(AlertDialog alertDialog);
+
+        /**
+         * Show that the request failed
+         * @param alertDialog - error dialog
+         */
         void showFailure(AlertDialog alertDialog);
     }
 
     interface Presenter extends BasePresenter {
-        public void submitAppointment(String firstName, String lastName, ContactInfo contactInfo);
+        /**
+         * Submit an appointment
+         * @param firstName - user first name
+         * @param lastName - user last name
+         * @param contactInfo - user contact info
+         */
+        void submitAppointment(String firstName, String lastName, ContactInfo contactInfo);
     }
 }
