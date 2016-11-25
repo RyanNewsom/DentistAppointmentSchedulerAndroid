@@ -32,21 +32,27 @@ public class AppointmentsPresenter implements AppointmentContract.Presenter {
 
     @Override
     public void refreshUI() {
-        StringRequest scheduleRequest = new StringRequest(Request.Method.GET, Config.AVAILABLE_APPOINTMENTS_UR,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        List<Appointment> appointments = Utils.convertJsonStringToList(response, Appointment[].class);
-                        mView.showAppointments(appointments);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Request Failed: " + error.getLocalizedMessage());
-            }
-        });
 
-        mRequestQueue.add(scheduleRequest);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                StringRequest scheduleRequest = new StringRequest(Request.Method.GET, Config.AVAILABLE_APPOINTMENTS_UR,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                List<Appointment> appointments = Utils.convertJsonStringToList(response, Appointment[].class);
+                                mView.showAppointments(appointments);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "Request Failed: " + error.getLocalizedMessage());
+                    }
+                });
+
+                mRequestQueue.add(scheduleRequest);
+            }
+        }).start();
     }
 
     @Override

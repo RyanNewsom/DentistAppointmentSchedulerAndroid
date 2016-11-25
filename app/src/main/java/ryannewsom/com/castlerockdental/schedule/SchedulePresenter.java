@@ -48,30 +48,34 @@ public class SchedulePresenter implements AppointmentContract.Presenter {
 
     @Override
     public void refreshUI() {
-
-        StringRequest scheduleRequest = new StringRequest(Request.Method.GET, Config.SCHEDULED_APPOINTMENTS_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        List<Appointment> appointments = Utils.convertJsonStringToList(response, Appointment[].class);
-
-                        Collections.sort(appointments);
-                        mView.showAppointments(appointments);
-                    }
-                }, new Response.ErrorListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Request Failed: " + error.getLocalizedMessage());
+            public void run() {
+                StringRequest scheduleRequest = new StringRequest(Request.Method.GET, Config.SCHEDULED_APPOINTMENTS_URL,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Display the first 500 characters of the response string.
+                                List<Appointment> appointments = Utils.convertJsonStringToList(response, Appointment[].class);
+
+                                Collections.sort(appointments);
+                                mView.showAppointments(appointments);
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "Request Failed: " + error.getLocalizedMessage());
+                    }
+                });
+
+                scheduleRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        Config.TIMEOUT_TIME,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                mRequestQueue.add(scheduleRequest);
             }
-        });
-
-        scheduleRequest.setRetryPolicy(new DefaultRetryPolicy(
-                Config.TIMEOUT_TIME,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-        mRequestQueue.add(scheduleRequest);
+        }).start();
     }
 
     @Override

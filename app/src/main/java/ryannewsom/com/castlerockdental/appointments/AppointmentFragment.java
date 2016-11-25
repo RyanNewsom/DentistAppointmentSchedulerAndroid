@@ -63,6 +63,17 @@ public class AppointmentFragment extends Fragment {
             mAppointment = (Appointment) bundle.getSerializable(
                     ScheduleAppointmentFragment.APPOINTMENT);
         }
+
+        if(savedInstanceState != null){
+            mAppointment = (Appointment) savedInstanceState.getSerializable(ScheduleAppointmentFragment.APPOINTMENT);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable(ScheduleAppointmentFragment.APPOINTMENT, mAppointment);
+
+        super.onSaveInstanceState(outState);
     }
 
     @Override

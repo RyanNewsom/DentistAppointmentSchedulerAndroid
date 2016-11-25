@@ -25,6 +25,7 @@ import ryannewsom.com.castlerockdental.appointments.AppointmentsPresenter;
  * Displays the current Scheduled Appointments for the business
  */
 public class ScheduleFragment extends Fragment implements AppointmentContract.View, AppointmentAdapterClickListener {
+    private static final String SCHEDULED_APPOINTMENTS = "SCHEDULED_APPOINTMENTS";
     private AppointmentContract.Presenter mPresenter;
     @BindView(R.id.schedule_recycler_view)
     public RecyclerView mRecyclerView;
@@ -32,6 +33,7 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
     public SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private List<Appointment> mScheduledAppointments;
 
     public ScheduleFragment() {
 
@@ -89,6 +91,7 @@ public class ScheduleFragment extends Fragment implements AppointmentContract.Vi
     @Override
     public void showAppointments(List<Appointment> scheduledAppointments) {
         // specify an adapter (see also next example)
+        mScheduledAppointments = scheduledAppointments;
         mSwipeRefreshLayout.setRefreshing(false);
 
         mAdapter = new AppointmentAdapter(this, scheduledAppointments);
