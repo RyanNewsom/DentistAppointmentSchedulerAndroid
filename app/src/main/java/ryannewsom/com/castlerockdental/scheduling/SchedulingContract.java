@@ -5,12 +5,10 @@ import android.app.AlertDialog;
 import model.users.entityinfo.ContactInfo;
 import ryannewsom.com.castlerockdental.base.BasePresenter;
 import ryannewsom.com.castlerockdental.base.BaseView;
-import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 
 /**
- * Created by Ryan on 11/23/2016.
+ * Contract for View and Presenter of Scheduling an Appointment
  */
-
 public interface SchedulingContract {
     interface View extends BaseView<SchedulingContract.Presenter> {
         void showWorking(boolean show);

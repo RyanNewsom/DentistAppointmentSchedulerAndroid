@@ -24,7 +24,7 @@ import ryannewsom.com.castlerockdental.scheduling.SchedulingPresenter;
 
 
 /**
- *
+ * Displays the currently available appointments
  */
 public class AppointmentsListFragment extends Fragment implements AppointmentContract.View,
         AppointmentAdapterClickListener{

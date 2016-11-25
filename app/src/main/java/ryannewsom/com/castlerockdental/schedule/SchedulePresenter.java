@@ -20,7 +20,6 @@ import ryannewsom.com.castlerockdental.networking.Utils;
 /**
  * Presenter for the Scheduling data
  */
-
 public class SchedulePresenter implements AppointmentContract.Presenter {
     private RequestQueue mRequestQueue;
     public static final String TAG = "SchedulePresenter";

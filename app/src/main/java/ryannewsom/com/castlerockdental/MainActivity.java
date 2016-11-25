@@ -18,7 +18,7 @@ import ryannewsom.com.castlerockdental.schedule.ScheduleFragment;
 import ryannewsom.com.castlerockdental.schedule.SchedulePresenter;
 
 /**
- * Main Activity with the toolbar and Nav Drawer. Retains the fragments.
+ * Main Activity with the toolbar and Nav Drawer. Retains the fragments & handles navigation.
  */
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.toolbar)
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.content_main, scheduleFragment).commit();
     }
 
+    //Launches the appointments fragment
     private void launchAppointmentsFragment() {
         AppointmentsListFragment appointmentsFragment = new AppointmentsListFragment();
         appointmentsFragment.setPresenter(new AppointmentsPresenter(appointmentsFragment, getApplicationContext()));

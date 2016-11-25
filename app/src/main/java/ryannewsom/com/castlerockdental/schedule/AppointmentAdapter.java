@@ -13,7 +13,7 @@ import model.appointment.Appointment;
 import ryannewsom.com.castlerockdental.R;
 
 /**
- * Adapter for Appointment data
+ * Adapter for Appointment data, basically encapsulates data for various Android Widgets to bind to
  */
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ViewHolder> {
     private List<Appointment> mAppointments;

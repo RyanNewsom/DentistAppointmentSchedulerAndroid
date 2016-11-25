@@ -22,7 +22,7 @@ import model.users.entityinfo.PhysicalAddress;
 import ryannewsom.com.castlerockdental.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * View which allows Scheduling of an Appointment
  */
 public class ScheduleAppointmentFragment extends Fragment implements SchedulingContract.View{
     public static final String APPOINTMENT = "APPOINTMENT";

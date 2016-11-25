@@ -7,9 +7,8 @@ import ryannewsom.com.castlerockdental.base.BasePresenter;
 import ryannewsom.com.castlerockdental.base.BaseView;
 
 /**
- * Created by Ryan on 11/21/2016.
+ * Contract for the View and Presenters of an Appointment
  */
-
 public interface AppointmentContract
 {
     interface View extends BaseView<Presenter> {

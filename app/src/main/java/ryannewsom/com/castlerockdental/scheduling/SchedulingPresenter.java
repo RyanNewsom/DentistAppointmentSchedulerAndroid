@@ -16,7 +16,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import model.appointment.Appointment;
 import model.users.User;
@@ -26,9 +25,8 @@ import ryannewsom.com.castlerockdental.networking.NetworkingError;
 import ryannewsom.com.castlerockdental.networking.Utils;
 
 /**
- * Created by Ryan on 11/23/2016.
+ * Presenter for Scheduling an Appointment
  */
-
 public class SchedulingPresenter implements SchedulingContract.Presenter {
     public static final String TAG = "SchedulingPresenter";
     private SchedulingContract.View mView;
@@ -49,7 +47,6 @@ public class SchedulingPresenter implements SchedulingContract.Presenter {
 
         mAppointment.setUser(new User(firstName, lastName, contactInfo));
 
-        //submit appointment request
         final String json = Utils.convertPojoToString(mAppointment);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

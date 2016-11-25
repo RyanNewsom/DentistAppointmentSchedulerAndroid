@@ -51,12 +51,17 @@ public class Appointment implements Serializable{
         return time;
     }
 
+    /**
+     * Gets a formatted time
+     * @return - a nicely formatted time to display
+     */
     public String getFormattedLocalTime(){
         String formattedTime = null;
         date = new Date(time);
 
         DateFormat df = new android.text.format.DateFormat();
         formattedTime = (String) df.format("MM-dd hh:mm aaa", new Date(time));
+
         return formattedTime;
     }
 

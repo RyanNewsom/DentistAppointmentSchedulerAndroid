@@ -36,6 +36,10 @@ public class User implements Serializable{
         return contactInfo;
     }
 
+    /**
+     * Returns a full name
+     * @return - users full name
+     */
     public String getName() {
         return firstName + " " + lastName;
     }

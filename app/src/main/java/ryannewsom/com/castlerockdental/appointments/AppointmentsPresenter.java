@@ -18,7 +18,7 @@ import ryannewsom.com.castlerockdental.networking.Utils;
 import ryannewsom.com.castlerockdental.schedule.AppointmentContract;
 
 /**
- * Created by Ryan on 11/22/2016.
+ * Handles presentation for the list of unscheduled appointments
  */
 
 public class AppointmentsPresenter implements AppointmentContract.Presenter {

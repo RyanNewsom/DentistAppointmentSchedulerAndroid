@@ -8,9 +8,8 @@ import ryannewsom.com.castlerockdental.R;
 import ryannewsom.com.castlerockdental.networking.NetworkingError;
 
 /**
- * Created by Ryan on 11/24/2016.
+ * Creates Dialogs for various scenarios
  */
-
 public class DialogFactory {
     private DialogFactory(){} //util class
 

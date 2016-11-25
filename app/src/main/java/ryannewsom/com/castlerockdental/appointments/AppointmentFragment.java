@@ -15,6 +15,7 @@ import ryannewsom.com.castlerockdental.R;
 import ryannewsom.com.castlerockdental.scheduling.ScheduleAppointmentFragment;
 
 /**
+ * Displays an Appointment
  */
 public class AppointmentFragment extends Fragment {
     protected Appointment mAppointment;
@@ -76,6 +77,7 @@ public class AppointmentFragment extends Fragment {
         return v;
     }
 
+    //Updates view w/ appointment values
     private void addAppointmentDataToView() {
         mDateView.setText(mAppointment.getFormattedLocalTime());
         mName.setText(mAppointment.getUser().getName());
