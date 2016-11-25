@@ -22,4 +22,13 @@ public class DialogFactory {
 
         return builder.create();
     }
+
+    public static AlertDialog getSuccessDialog(Activity activity){
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        builder.setMessage("Appointment Made")
+                .setTitle("Success!");
+
+        return builder.create();
+    }
 }

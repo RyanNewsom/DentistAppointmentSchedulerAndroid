@@ -57,6 +57,7 @@ public class SchedulingPresenter implements SchedulingContract.Presenter {
             public void onResponse(String response) {
                 Log.i(TAG, response);
                 mView.showWorking(false);
+                mView.showSuccess(DialogFactory.getSuccessDialog(mView.getActivity()));
             }
         }, new Response.ErrorListener() {
             @Override
