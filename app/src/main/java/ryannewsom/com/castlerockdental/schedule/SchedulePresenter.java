@@ -65,6 +65,7 @@ public class SchedulePresenter implements AppointmentContract.Presenter {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, "Request Failed: " + error.getLocalizedMessage());
+
                     }
                 });
 
