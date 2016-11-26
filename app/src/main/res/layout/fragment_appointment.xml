@@ -9,20 +9,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/banner"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:background="@color/colorPrimaryDark">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/Default_Title"
+            android:layout_gravity="center_horizontal"
             android:text="12/12/2012"
-            android:id="@+id/date_textview"/>
+            android:id="@+id/date_textview"
+            android:textColor="@color/white"/>
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/banner">
+        android:layout_below="@+id/banner"
+        android:layout_marginTop="@dimen/vertical_spacing_normal">
 
         <TextView
             android:layout_width="wrap_content"

@@ -4,11 +4,28 @@
     android:layout_height="match_parent"
     tools:context="ryannewsom.com.castlerockdental.scheduling.ScheduleAppointmentFragment"
 >
+
+    <FrameLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Default_Title"
+            android:id="@+id/date_textview"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"/>\
+    </FrameLayout>
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:fillViewport="true"
         android:scrollbars="vertical"
+        android:layout_below="@id/banner"
         android:layout_above="@+id/submit_button">
 
         <LinearLayout
@@ -16,12 +33,6 @@
             android:layout_height="match_parent"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Default_TextField"
-                android:id="@+id/date_textview"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -117,7 +128,7 @@
         android:id="@+id/submit_button"
         android:layout_marginTop="@dimen/vertical_spacing_normal"
         style="@style/Default_TextField"
-        android:background="@color/colorPrimary"
+        android:background="@color/actionable"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_alignParentBottom="true"
